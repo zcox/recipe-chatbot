@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Chatbot</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Basic, responsive chat styling */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: #f8f9fa; /* Slightly lighter background */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        height: 100vh;
+      }
+
+      #app-container { /* New wrapper */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 600px;
+        height: 100%; /* Take full height of body */
+        box-sizing: border-box;
+        /* padding: 0 16px; /* Remove horizontal padding here, apply to children if needed */
+        background-color: #ffffff; /* Give app-container a white background */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+        border-radius: 12px; /* Rounded corners for the whole app box */
+        overflow: hidden; /* To make sure children respect border-radius */
+        margin: 16px; /* Add some margin around the app container */
+      }
+
+      #chat-container {
+        /* width: 100%; /* Handled by app-container */
+        /* max-width: 600px; /* Handled by app-container */
+        flex: 1; /* Takes available space */
+        display: flex;
+        flex-direction: column;
+        padding: 20px 20px 10px 20px; /* More padding */
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+
+      .message {
+        padding: 10px 15px;
+        border-radius: 18px; /* Softer, more modern radius */
+        margin-bottom: 10px;
+        max-width: 85%;
+        line-height: 1.5;
+      }
+
+      .user {
+        align-self: flex-end;
+        background-color: #e0f0ff; /* Lighter, softer blue for user */
+        color: #00529b; /* Darker blue text for contrast */
+      }
+
+      .assistant {
+        align-self: flex-start;
+        background-color: #f1f3f5; /* Lighter gray for assistant */
+        color: #343a40; /* Darker gray text */
+        border: none; /* Remove default border */
+      }
+      
+      /* Styling for markdown elements inside assistant messages */
+      .assistant p { margin: 0.5em 0; }
+      .assistant ul, .assistant ol { margin: 0.5em 0 0.5em 20px; padding: 0; }
+      .assistant li { margin-bottom: 0.25em; }
+      .assistant pre { 
+        background-color: #e9ecef; 
+        padding: 10px; 
+        border-radius: 6px; 
+        overflow-x: auto; 
+        font-size: 0.9em;
+      }
+      .assistant code { 
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        font-size: 0.9em; 
+        background-color: rgba(0,0,0,0.04);
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+      .assistant pre code {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+      }
+
+      #typing-indicator {
+        box-sizing: border-box; 
+        display: none; 
+        color: #6c757d; /* Subtler gray for typing */
+        font-style: italic;
+        padding: 10px 15px; /* Match message padding */
+        margin-bottom: 8px; 
+        border-radius: 18px; /* Match message radius */
+        background-color: #f1f3f5; /* Match assistant background */
+        align-self: flex-start; /* Ensure it aligns like an assistant message */
+        max-width: fit-content; /* Only as wide as its content */
+        margin-left: 20px; /* Align with chat content padding */
+      }
+
+      #input-form {
+        display: flex;
+        align-items: center; /* Vertically align input and button */
+        padding: 15px 20px; /* More padding */
+        box-sizing: border-box;
+        background-color: #f8f9fa; /* Slightly off-white for input area */
+        border-top: 1px solid #dee2e6; /* Subtle separator line */
+      }
+
+      #user-input {
+        flex: 1;
+        padding: 12px 15px;
+        font-size: 1rem; /* Consistent font size */
+        border: 1px solid #ced4da; /* Softer border */
+        border-radius: 20px; /* Rounded pill shape */
+        margin-right: 10px;
+        outline: none; /* Remove default focus outline */
+        transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+      #user-input:focus {
+        border-color: #4dabf7; /* Blue border on focus */
+        box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.25); /* Subtle glow on focus */
+      }
+
+      #send-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: 500; /* Slightly bolder text */
+        background-color: #28a745; /* Green send button */
+        color: #fff;
+        border: none;
+        border-radius: 20px; /* Match input field */
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+      }
+      #send-btn:hover {
+        background-color: #218838; /* Darker green on hover */
+      }
+      #send-btn:disabled {
+        background-color: #adb5bd; /* Gray when disabled */
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="font-family: 'Inter', sans-serif; font-weight: 600; color: #343a40; margin-top: 24px; margin-bottom: 16px; text-align: center;">Recipe Chatbot</h2>
+    <div id="app-container"> <!-- New wrapper -->
+        <div id="chat-container">
+            <!-- Messages are rendered here by renderChat -->
+        </div>
+        <div id="typing-indicator">Assistant is typing...</div>
+        <form id="input-form">
+            <input
+                id="user-input"
+                type="text"
+                placeholder="Ask for a recipe..."
+                autocomplete="off"
+                required
+            />
+            <button id="send-btn" type="submit">Send</button>
+        </form>
+    </div> <!-- End of app-container -->
+
+    <script>
+      const form = document.getElementById("input-form");
+      const input = document.getElementById("user-input");
+      const chatContainer = document.getElementById("chat-container");
+      const sendBtn = document.getElementById("send-btn");
+      const typingIndicator = document.getElementById("typing-indicator");
+
+      let chatHistory = []; // Holds all messages: { role: string, content: string }[]
+      let typingInterval = null; // Variable to hold the interval ID
+
+      /**
+       * Clears and re-renders all messages in the chat container based on chatHistory.
+       */
+      function renderChat() {
+        chatContainer.innerHTML = ""; // Clear existing messages
+        chatHistory.forEach(msg => {
+          if (msg.role === "system") return;
+
+          const bubble = document.createElement("div");
+          bubble.classList.add("message", msg.role);
+          
+          if (msg.role === "assistant") {
+            bubble.innerHTML = marked.parse(msg.content || ""); // Use marked.parse for assistant
+          } else {
+            bubble.textContent = msg.content;
+          }
+          chatContainer.appendChild(bubble);
+        });
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      async function sendMessage(evt) {
+        evt.preventDefault();
+        const userText = input.value.trim();
+        if (!userText) return;
+
+        // Add user message to history and re-render
+        chatHistory.push({ role: "user", content: userText });
+        renderChat();
+
+        input.value = "";
+        input.focus();
+        sendBtn.disabled = true;
+        
+        typingIndicator.style.display = "block";
+        let dotCount = 0;
+        typingIndicator.textContent = "Assistant is typing"; // Initial text without dots
+        if (typingInterval) clearInterval(typingInterval);
+        typingInterval = setInterval(() => {
+          dotCount = (dotCount + 1) % 4;
+          typingIndicator.textContent = `Assistant is typing${'.'.repeat(dotCount)}`;
+        }, 300);
+        typingIndicator.scrollIntoView({ behavior: "smooth", block: "end" }); // Scroll indicator into view
+
+        try {
+          // Send the whole history
+          const res = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: chatHistory }),
+          });
+
+          if (!res.ok) {
+            const errorData = await res.json();
+            throw new Error(errorData.detail || `Server responded with ${res.status}`);
+          }
+
+          const data = await res.json();
+          chatHistory = data.messages; // Update history with the server's version
+          renderChat(); // Re-render with the full history from server
+
+        } catch (error) {
+          // Add error message to history and re-render
+          chatHistory.push({
+            role: "assistant", 
+            content: `Oops! Something went wrong: ${error.message}. Please try again.`
+            // Error message will also be parsed by marked in renderChat
+          });
+          renderChat();
+          console.error(error);
+        } finally {
+          sendBtn.disabled = false;
+          typingIndicator.style.display = "none";
+          if (typingInterval) clearInterval(typingInterval); // Stop animation
+          typingInterval = null;
+        }
+      }
+
+      form.addEventListener("submit", sendMessage);
+      // Initial render (in case there's a system message or pre-filled history later)
+      renderChat();
+    </script>
+  </body>
+</html> 
