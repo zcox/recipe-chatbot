@@ -42,7 +42,7 @@ recipe-chatbot/
 
 1.  **Clone the Repository (if you haven't already)**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/ai-evals-course/recipe-chatbot.git
     cd recipe-chatbot
     ```
 
@@ -195,8 +195,4 @@ Your main task is to get the repo to a starting point for Lesson 2.
         ```
     * Make sure a new CSV has been written.
     
-Good luck with your assignment!
-
----
-
-*This README was last updated: {datetime.datetime.now().strftime('%Y-%m-%d')}* 
+Good luck!
