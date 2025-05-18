@@ -1,10 +1,22 @@
-# Homework Assignment: Recipe Chatbot
+# Recipe Chatbot
+
+> 📝 **Note:** This project serves as a foundation for ongoing development throughout the AI Evals course. We will be incrementally adding features and refining its capabilities in subsequent lessons and homework assignments.
 
 This project provides a starting point for building and evaluating an AI-powered Recipe Chatbot. You will be working with a web application that uses FastAPI for the backend and a simple HTML/CSS/JavaScript frontend. The core of the chatbot involves interacting with a Large Language Model (LLM) via LiteLLM to get recipe recommendations.
 
 Your main tasks will be to refine the chatbot's persona and intelligence by crafting a detailed system prompt, expanding its test query dataset, and evaluating its performance.
 
 ![Recipe Chatbot UI](./screenshots/hw1.png)
+
+## Table of Contents
+
+- [Core Components Provided](#core-components-provided)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+- [Running the Provided Application](#running-the-provided-application)
+  - [1. Run the Web Application (Frontend and Backend)](#1-run-the-web-application-frontend-and-backend)
+  - [2. Run the Bulk Test Script](#2-run-the-bulk-test-script)
+- [Homework Assignment 1: Write a Starting Prompt](#homework-assignment-1-write-a-starting-prompt)
 
 ## Core Components Provided
 
