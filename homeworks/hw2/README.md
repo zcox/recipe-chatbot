@@ -15,6 +15,8 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
     *   Write a second prompt for an LLM to take 5-7 of the generated tuples and create a natural language user query for your Recipe Bot for each selected tuple.
     *   Review these generated queries to ensure they are realistic and representative of how a user might interact with your bot.
 
+    **Alternative for Query Generation:** If you prefer to skip the LLM-based query generation (steps 2 and 3 above), you may use the pre-existing queries and bot responses found in `homeworks/hw2/results_20250518_215844.csv` as the basis for your error analysis in Part 2. You can then proceed directly to the "Open Coding" step using this data.
+
 ## Part 2: Initial Error Analysis (Ref Sec 3.2, 3.3, 3.4 of relevant course material)
 
 1.  **Run Bot on Synthetic Queries:**
