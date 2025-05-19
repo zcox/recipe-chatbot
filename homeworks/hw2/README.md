@@ -1,0 +1,42 @@
+# Homework 2: Recipe Bot Error Analysis
+
+This assignment focuses on performing an error analysis for your Recipe Bot.
+
+## Part 1: Define Dimensions & Generate Initial Queries
+
+1.  **Identify Key Dimensions:**
+    *   Identify 3-4 key dimensions relevant to your Recipe Bot's functionality and potential user inputs.
+    *   For each dimension, list at least 3 example values.
+
+2.  **Generate Unique Combinations (Tuples):**
+    *   Write a prompt for a Large Language Model (LLM) to generate 15-20 unique combinations (tuples) of these dimension values.
+
+3.  **Generate Natural Language User Queries:**
+    *   Write a second prompt for an LLM to take 5-7 of the generated tuples and create a natural language user query for your Recipe Bot for each selected tuple.
+    *   Review these generated queries to ensure they are realistic and representative of how a user might interact with your bot.
+
+## Part 2: Initial Error Analysis (Ref Sec 3.2, 3.3, 3.4 of relevant course material)
+
+1.  **Run Bot on Synthetic Queries:**
+    *   Execute your Recipe Bot using the synthetic queries generated in Part 1.
+    *   Record the full interaction traces for each query.
+
+2.  **Open Coding:**
+    *   Review the recorded traces.
+    *   Perform open coding to identify initial themes, patterns, and potential errors or areas for improvement in the bot's responses.
+
+3.  **Axial Coding & Taxonomy Definition:**
+    *   Group the observations from open coding into broader categories or failure modes.
+    *   For each identified failure mode, create a clear and concise taxonomy. This should include:
+        *   **A clear Title** for the failure mode.
+        *   **A concise one-sentence Definition** explaining the failure mode.
+        *   **1-2 Illustrative Examples** taken directly from your bot's behavior during the tests. If a failure mode is plausible but not directly observed, you can provide a well-reasoned hypothetical example.
+
+4.  **[Optional] Spreadsheet for Analysis:**
+    *   Create a spreadsheet to systematically track your error analysis.
+    *   Include the following columns:
+        *   `Trace_ID` (a unique identifier for each interaction)
+        *   `User_Query` (the query given to the bot)
+        *   `Full_Bot_Trace_Summary` (a summary of the bot's full response and behavior)
+        *   `Open_Code_Notes` (your notes and observations from the open coding process)
+        *   A column for each of your 3-5 defined `Failure_Mode_Title`s (use 0 or 1 to indicate the presence or absence of that failure mode in the trace). 
