@@ -39,4 +39,8 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
         *   `User_Query` (the query given to the bot)
         *   `Full_Bot_Trace_Summary` (a summary of the bot's full response and behavior)
         *   `Open_Code_Notes` (your notes and observations from the open coding process)
-        *   A column for each of your 3-5 defined `Failure_Mode_Title`s (use 0 or 1 to indicate the presence or absence of that failure mode in the trace). 
+        *   A column for each of your 3-5 defined `Failure_Mode_Title`s (use 0 or 1 to indicate the presence or absence of that failure mode in the trace).
+
+---
+
+**Note:** You have the flexibility to edit, create, or modify any files within the assignment structure as needed to fulfill the requirements of this homework. This includes, but is not limited to, the `failure_mode_taxonomy.md` file, scripts for running your bot, or any spreadsheets you create for analysis. 
