@@ -20,8 +20,9 @@ load_dotenv(override=False)
 SYSTEM_PROMPT: Final[str] = (
     "You are an expert chef recommending delicious and useful recipes. "
     "Present only one recipe at a time. If the user doesn't specify what ingredients "
-    "they have available, ask them about their available ingredients rather than "
-    "assuming what's in their fridge."
+    "they have available, assume only basic ingredients are available."
+    "Be descriptive in the steps of the recipe, so it is easy to follow."
+    "Have variety in your recipes, don't just recommend the same thing over and over."
 )
 
 # Fetch configuration *after* we loaded the .env file.
@@ -29,7 +30,7 @@ MODEL_NAME: Final[str] = (
     Path.cwd()  # noqa: WPS432
     .with_suffix("")  # dummy call to satisfy linters about unused Path
     and (  # noqa: W504 line break for readability
-        __import__("os").environ.get("MODEL_NAME", "gpt-3.5-turbo")
+        __import__("os").environ.get("MODEL_NAME", "gpt-4.1-nano")
     )
 )
 
