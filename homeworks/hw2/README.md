@@ -4,7 +4,7 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
 
 ## Part 1: Define Dimensions & Generate Initial Queries
 
-1.  **Identify Key Dimensions:**
+1.  **Identify Key Dimensions:** (i.e., key aspects or variables of user inputs you'll use to generate diverse test queries, such as `cuisine_type`, `dietary_restriction`, or `meal_type` for your recipe bot)
     *   Identify 3-4 key dimensions relevant to your Recipe Bot's functionality and potential user inputs.
     *   For each dimension, list at least 3 example values.
 
@@ -23,11 +23,11 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
     *   Execute your Recipe Bot using the synthetic queries generated in Part 1.
     *   Record the full interaction traces for each query.
 
-2.  **Open Coding:**
+2.  **Open Coding:** (an initial analysis step where you review interaction traces, assigning descriptive labels/notes to identify patterns and potential errors without preconceived categories, as detailed in Sec 3.2 of the provided chapter)
     *   Review the recorded traces.
     *   Perform open coding to identify initial themes, patterns, and potential errors or areas for improvement in the bot's responses.
 
-3.  **Axial Coding & Taxonomy Definition:**
+3.  **Axial Coding & Taxonomy Definition:** (a follow-up step where you group the initial open codes into broader, structured categories or 'failure modes' to build an error taxonomy, as described in Sec 3.3 of the provided chapter)
     *   Group the observations from open coding into broader categories or failure modes.
     *   For each identified failure mode, create a clear and concise taxonomy. This should include:
         *   **A clear Title** for the failure mode.
