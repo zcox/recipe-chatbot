@@ -1,5 +1,9 @@
 # Homework 2: Recipe Bot Error Analysis
 
+## 📝 Note
+
+**We have provided our solutions in this repository as reference material, but we strongly encourage you to work through the exercise on your own first.** Attempting the assignment independently will help you better understand the error analysis process and develop your own insights about chatbot failure modes.
+
 This assignment focuses on performing an error analysis for your Recipe Bot.
 
 ## Part 1: Define Dimensions & Generate Initial Queries
