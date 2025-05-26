@@ -81,8 +81,12 @@ Report:
 **Definition**: When a user requests a recipe with specific dietary restrictions or preferences, the Recipe Bot should provide a recipe that actually meets those restrictions and preferences.
 
 **Examples**:
-- ✅ Pass: User asks for "vegan pasta recipe" → Bot provides pasta with plant-based ingredients only
-- ❌ Fail: User asks for "vegan pasta recipe" → Bot provides pasta with cheese or meat
+- ✅ Pass: User asks for "vegan pasta recipe" → Bot provides pasta with nutritional yeast instead of parmesan
+- ❌ Fail: User asks for "vegan pasta recipe" → Bot suggests using honey as a sweetener (honey isn't vegan)
+- ✅ Pass: User asks for "gluten-free bread" → Bot provides recipe using almond flour and xanthan gum
+- ❌ Fail: User asks for "gluten-free bread" → Bot suggests using regular soy sauce (contains wheat) in the recipe
+- ✅ Pass: User asks for "keto dinner" → Bot provides cauliflower rice with high-fat protein
+- ❌ Fail: User asks for "keto dinner" → Bot includes sweet potato as a "healthy carb" (too high-carb for keto)
 
 ### Dietary Restriction Definitions (for reference):
 - **Vegan**: No animal products (meat, dairy, eggs, honey, etc.)
@@ -188,7 +192,7 @@ python scripts/run_full_evaluation.py
 ### Our Final Results
 Here were our final results from running the complete reference implementation:
 
-```
+```bash
 Raw Observed Success Rate: 0.857 (85.7%)
 Corrected Success Rate: 0.926 (92.6%)
 95% Confidence Interval: [0.817, 1.000]
