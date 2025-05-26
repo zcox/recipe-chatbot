@@ -13,17 +13,47 @@ We'll provide ~2000 starter Recipe Bot traces and detailed criteria for this fai
 - Your critical thinking & prompt engineering skills!
 - The `judgy` Python library: [github.com/ai-evals-course/judgy](https://github.com/ai-evals-course/judgy)
 
+## Three Implementation Options
+
+You have three options for how much of the pipeline to implement yourself:
+
+### Option 1: Full Implementation (Most Learning)
+Start from scratch and implement the complete pipeline:
+- Generate your own Recipe Bot traces
+- Label your own data
+- Build the entire evaluation workflow
+- **Learning**: Complete end-to-end experience with LLM-as-Judge methodology
+
+### Option 2: Start with Raw Traces (Medium Implementation)
+Use our provided `raw_traces.csv` (~2400 traces) and focus on the evaluation:
+- Skip trace generation, start with labeling
+- Implement judge development and evaluation
+- Focus on the core LLM-as-Judge workflow
+- **Learning**: Judge development, bias correction, and statistical evaluation
+
+### Option 3: Start with Labeled Data (Judge Development Focus)
+Use our provided `labeled_traces.csv` (150 labeled examples):
+- Skip trace generation and labeling
+- Focus on judge prompt engineering and evaluation
+- Implement the statistical correction workflow
+- **Learning**: Judge optimization and bias correction techniques
+
+Choose the option that best fits your learning goals and available time!
+
 ## Assignment Steps: From Labels to Confident Measurement 📊
 
-### Step 1: Get & Label Your Data (Crucial!)
+### Step 1: Get & Label Your Data (Crucial!) *[Option 1 & 2 start here]*
 - **If using our "Dietary Adherence" task**: Manually label a subset of the provided traces (e.g., 100-200 examples) as "Pass" or "Fail" based on the provided criteria. This is your ground truth!
 - **If using your own failure mode**: Generate/collect and label your traces.
+- **Option 1**: Generate your own traces first, then label them
+- **Option 2**: Use our provided `raw_traces.csv`, then label a subset
 
-### Step 2: Split Your Labeled Data
+### Step 2: Split Your Labeled Data *[Option 3 starts here]*
 - Divide your labeled set into Train (~10-20%), Dev (~40%), and Test (~40-50%)
 - Briefly explain your split rationale
+- **Option 3**: Use our provided `labeled_traces.csv` and split it
 
-### Step 3: Develop Your LLM-as-Judge Prompt
+### Step 3: Develop Your LLM-as-Judge Prompt *[All options continue from here]*
 Craft a clear prompt with:
 - The specific task/criterion
 - Precise Pass/Fail definitions
