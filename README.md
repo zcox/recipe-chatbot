@@ -83,14 +83,14 @@ recipe-chatbot/
         ```
         (or `cp .env.example .env` if you have that one)
     *   Edit the `.env` file. You will need to:
-        1.  Set the `MODEL_NAME` to the specific model you want to use (e.g., `openai/gpt-3.5-turbo`, `anthropic/claude-3-opus-20240229`, `ollama/llama2`).
+        1.  Set the `MODEL_NAME` to the specific model you want to use (e.g., `openai/gpt-4.1-nano`, `anthropic/claude-3-opus-20240229`, `ollama/llama2`).
         2.  Set the **appropriate API key environment variable** for the chosen model provider. 
             Refer to your `env.example` for common API key names like `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, etc. 
             LiteLLM will automatically use these provider-specific keys.
 
         Example of a configured `.env` file if using an OpenAI model:
         ```env
-        MODEL_NAME=openai/gpt-3.5-turbo
+        MODEL_NAME=openai/gpt-4.1-nano
         OPENAI_API_KEY=sk-yourActualOpenAIKey...
         ```
         Example for an Anthropic model:
