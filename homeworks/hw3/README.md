@@ -30,6 +30,7 @@ Use our provided `raw_traces.csv` (~2400 traces) and focus on the evaluation:
 - Implement judge development and evaluation
 - Focus on the core LLM-as-Judge workflow
 - **Learning**: Judge development, bias correction, and statistical evaluation
+- **Note**: Our traces were generated using `dietary_queries.csv` - 60 moderate to challenging edge queries we crafted
 
 ### Option 3: Start with Labeled Data (Judge Development Focus)
 Use our provided `labeled_traces.csv` (150 labeled examples):
@@ -45,7 +46,7 @@ Choose the option that best fits your learning goals and available time!
 ### Step 1: Get & Label Your Data (Crucial!) *[Option 1 & 2 start here]*
 - **If using our "Dietary Adherence" task**: Manually label a subset of the provided traces (e.g., 100-200 examples) as "Pass" or "Fail" based on the provided criteria. This is your ground truth!
 - **If using your own failure mode**: Generate/collect and label your traces.
-- **Option 1**: Generate your own traces first, then label them
+- **Option 1**: Generate your own traces first, then label them. Feel free to use data/dietary_queries.csv as a starting point for queries to generate traces with.
 - **Option 2**: Use our provided `raw_traces.csv`, then label a subset
 
 ### Step 2: Split Your Labeled Data *[Option 3 starts here]*
@@ -153,7 +154,7 @@ homeworks/hw3/
 │   ├── evaluate_judge.py           # Evaluate judge performance on test set
 │   └── run_full_evaluation.py      # Run judge on all traces and compute metrics
 ├── data/
-│   ├── dietary_queries.csv         # 60 challenging dietary preference queries
+│   ├── dietary_queries.csv         # 60 challenging edge case queries we crafted
 │   ├── raw_traces.csv              # Generated Recipe Bot traces (~2400 total)
 │   ├── labeled_traces.csv          # Traces with ground truth labels (150)
 │   ├── train_set.csv               # Training examples for few-shot (~23)
