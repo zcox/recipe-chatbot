@@ -4,7 +4,7 @@
 
 **Example**: If a user asks for a "vegan" recipe, does the bot provide one that is actually vegan?
 
-We'll provide ~2000 starter Recipe Bot traces and detailed criteria for this failure mode if you want a head start! (Link on course site). We picked this criterion because it's fairly easy to align an LLM judge on dietary restrictions - the rules are generally clear and objective.
+We'll provide ~2000 starter Recipe Bot traces and detailed criteria for this failure mode if you want a head start! We picked this criterion because it's fairly easy to align an LLM judge on dietary restrictions - the rules are generally clear and objective.
 
 **Alternatively**, you can choose a different Recipe Bot failure mode you identified in HW2/Chapter 3, but you'll need to define criteria and generate/source all your own traces.
 
