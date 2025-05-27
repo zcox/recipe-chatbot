@@ -26,6 +26,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from backend.utils import get_agent_response
 
+MAX_WORKERS = 32
+
 console = Console()
 
 def load_dietary_queries(csv_path: str) -> List[Dict[str, Any]]:
@@ -76,7 +78,7 @@ def generate_trace_with_id(args: tuple) -> Dict[str, Any]:
 
 def generate_multiple_traces_per_query(queries: List[Dict[str, Any]], 
                                      traces_per_query: int = 40,
-                                     max_workers: int = 64) -> List[Dict[str, Any]]:
+                                     max_workers: int = MAX_WORKERS) -> List[Dict[str, Any]]:
     """Generate multiple traces for each query using parallel processing."""
     
     # Create all the tasks

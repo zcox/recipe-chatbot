@@ -18,6 +18,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+MAX_WORKERS = 32
+
 console = Console()
 
 # Labeling prompt for GPT-4o
@@ -135,7 +137,7 @@ def label_single_trace(trace: Dict[str, Any]) -> Dict[str, Any]:
 
 def label_traces(traces: List[Dict[str, Any]], 
                 sample_size: int = 150, 
-                max_workers: int = 32) -> List[Dict[str, Any]]:
+                max_workers: int = MAX_WORKERS) -> List[Dict[str, Any]]:
     """Label a sample of traces using GPT-4o with parallel processing."""
     # Sample traces for labeling
     if len(traces) > sample_size:
@@ -216,7 +218,7 @@ def main():
     
     # Label traces with parallel processing
     console.print("[yellow]Labeling traces with GPT-4o using parallel processing...")
-    labeled_traces = label_traces(traces, sample_size=200, max_workers=6)  # Label more than needed
+    labeled_traces = label_traces(traces, sample_size=200, max_workers=MAX_WORKERS)  # Label more than needed
     
     # Balance the dataset
     balanced_traces = balance_labels(labeled_traces, target_positive=75, target_negative=75)

@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 load_dotenv()
+MAX_WORKERS = 32
 
 console = Console()
 
@@ -173,7 +174,7 @@ def evaluate_single_trace(args: tuple) -> Dict[str, Any]:
         }
 
 def evaluate_judge_on_dev(judge_prompt: str, dev_traces: List[Dict[str, Any]], 
-                         sample_size: int = 50, max_workers: int = 8) -> Tuple[float, float, List[Dict[str, Any]]]:
+                         sample_size: int = 50, max_workers: int = MAX_WORKERS) -> Tuple[float, float, List[Dict[str, Any]]]:
     """Evaluate the judge prompt on a sample of the dev set using parallel processing."""
     
     # Sample dev traces for evaluation

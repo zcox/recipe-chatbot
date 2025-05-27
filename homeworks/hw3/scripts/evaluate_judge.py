@@ -17,6 +17,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dotenv import load_dotenv
 load_dotenv()
 
+MAX_WORKERS = 32
+
 console = Console()
 
 def load_data_split(csv_path: str) -> List[Dict[str, Any]]:
@@ -96,7 +98,7 @@ def evaluate_single_trace(args: tuple) -> Dict[str, Any]:
         }
 
 def evaluate_judge_on_test(judge_prompt: str, test_traces: List[Dict[str, Any]], 
-                          max_workers: int = 16) -> Tuple[float, float, List[Dict[str, Any]]]:
+                          max_workers: int = MAX_WORKERS) -> Tuple[float, float, List[Dict[str, Any]]]:
     """Evaluate the judge prompt on the test set using parallel processing."""
     
     console.print(f"[yellow]Evaluating judge on {len(test_traces)} test traces with {max_workers} workers...")

@@ -51,8 +51,7 @@ Choose the option that best fits your learning goals and available time!
 
 ### Step 2: Split Your Labeled Data *[Option 3 starts here]*
 - Divide your labeled set into Train (~10-20%), Dev (~40%), and Test (~40-50%)
-- Briefly explain your split rationale
-- **Option 3**: Use our provided `labeled_traces.csv` and split it
+- **Option 3**: Use our provided `labeled_traces.csv` (has 150 queries, which is > 100 but we provide more for demonstration purposes) and split it
 
 ### Step 3: Develop Your LLM-as-Judge Prompt *[All options continue from here]*
 Craft a clear prompt with:
@@ -89,7 +88,7 @@ Report:
 - ✅ Pass: User asks for "keto dinner" → Bot provides cauliflower rice with high-fat protein
 - ❌ Fail: User asks for "keto dinner" → Bot includes sweet potato as a "healthy carb" (too high-carb for keto)
 
-### Dietary Restriction Definitions (for reference):
+### Dietary Restriction Definitions (for reference; taken from OpenAI o4):
 - **Vegan**: No animal products (meat, dairy, eggs, honey, etc.)
 - **Vegetarian**: No meat or fish, but dairy and eggs are allowed
 - **Gluten-free**: No wheat, barley, rye, or other gluten-containing grains
@@ -117,10 +116,6 @@ Report:
 - "Something not too carb-y for dinner"
 - "Something keto-ish but not super strict"
 - "Dairy-free but cheese is okay sometimes"
-
-**Complex Social Dynamics:**
-- "Whole30 compliant dinner that my non-Whole30 husband will actually eat"
-- "Gluten-free birthday cake for my 5-year-old who has celiac but all her friends will be eating regular cake"
 
 ## Key Metrics to Understand
 - **True Positive Rate (TPR)**: How often the judge correctly identifies adherent recipes

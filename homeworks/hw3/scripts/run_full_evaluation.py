@@ -20,6 +20,8 @@ load_dotenv()
 
 console = Console()
 
+MAX_WORKERS = 32
+
 def load_traces(csv_path: str) -> List[Dict[str, Any]]:
     """Load traces from CSV file."""
     df = pd.read_csv(csv_path)
@@ -92,7 +94,7 @@ def evaluate_single_trace_for_binary(args: tuple) -> int:
         return 0
 
 def run_judge_on_traces(judge_prompt: str, traces: List[Dict[str, Any]], 
-                       max_workers: int = 32) -> List[int]:
+                       max_workers: int = MAX_WORKERS) -> List[int]:
     """Run the judge on all traces and return binary predictions using parallel processing."""
     
     console.print(f"[yellow]Running judge on {len(traces)} traces with {max_workers} workers...")
