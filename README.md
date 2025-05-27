@@ -1,3 +1,19 @@
+# My Changes
+
+Followed [uv-ification instructions](https://discord.com/channels/1368666390185246770/1374464381731213402/1374557501588242472).
+
+To run the web app:
+
+```
+uv run uvicorn backend.main:app --reload
+```
+
+To generate outputs for evaluation:
+
+```
+uv run python scripts/bulk_test.py
+```
+
 # Recipe Chatbot
 
 > 📝 **Note:** This project serves as a foundation for ongoing development throughout the AI Evals course. We will be incrementally adding features and refining its capabilities in subsequent lessons and homework assignments.
