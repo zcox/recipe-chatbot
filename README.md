@@ -1,5 +1,14 @@
 # My Changes
 
+My `.env` file:
+
+```
+MODEL_NAME=gemini/gemini-2.0-flash-002
+GEMINI_API_KEY=[my api key]
+```
+
+For the Gemini API key, go to https://aistudio.google.com/ and click `Get API key`.
+
 Followed [uv-ification instructions](https://discord.com/channels/1368666390185246770/1374464381731213402/1374557501588242472).
 
 To run the web app:
