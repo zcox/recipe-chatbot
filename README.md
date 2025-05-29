@@ -91,6 +91,8 @@ recipe-chatbot/
     ```bash
     pip install -r requirements.txt
     ```
+    
+    > **Note**: The `requirements.txt` includes dependencies for all homework assignments, including advanced evaluation tools like `judgy` for LLM-as-Judge workflows (Homework 3) and machine learning libraries for data analysis.
 
 4.  **Configure Environment Variables (`.env` file)**
     *   Copy the example environment file:
